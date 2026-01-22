@@ -187,7 +187,7 @@ button {
 }
 
 .tp-intro-lead {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.8;
   color: #422a07;
   font-weight: 500;
@@ -476,8 +476,8 @@ button {
 }
 
 .tp-effects-description {
-  font-size: 1.5rem;
-  line-height: 2;
+  font-size: 1.4rem;
+  line-height: 1.8;
   color: #444;
   margin-bottom: 40px;
 }
@@ -501,8 +501,8 @@ button {
 
 .tp-effects-highlight span {
   color: #d84315;
-  font-weight: bold;
-  display: inline-block;
+  font-weight: 500;
+  /* display: inline-block; */
 }
 
 
@@ -1227,7 +1227,7 @@ button {
   text-align: center;
   color: #d84315;
   margin-top: 0;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .tp-modal-item {
