@@ -1,0 +1,116 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // 年号
+  const y = document.getElementById('year');
+  if (y) y.textContent = String(new Date().getFullYear());
+
+  // モバイルナビ
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('siteNav');
+
+  if (toggle && nav) {
+    const closeNav = () => {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // ナビリンククリックで閉じる
+    nav.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (a && nav.classList.contains('is-open')) closeNav();
+    });
+
+    // Escで閉じる
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeNav();
+    });
+  }
+
+  // QAアコーディオン
+  (function(){
+    const root = document.querySelector('[data-accordion]');
+    if (!root) return;
+
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    root.querySelectorAll('.faq__item').forEach((item) => {
+      const btn = item.querySelector('.faq__q');
+      const id = btn && btn.getAttribute('aria-controls');
+      const panel = id ? document.getElementById(id) : null;
+      if (!btn || !panel) return;
+
+      btn.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+      panel.style.height = '0px';
+
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        open ? close(btn, panel) : openPanel(btn, panel);
+      });
+    });
+
+    function openPanel(btn, panel){
+      btn.setAttribute('aria-expanded', 'true');
+      panel.setAttribute('aria-hidden', 'false');
+
+      if (reduce){
+        panel.style.height = 'auto';
+        return;
+      }
+
+      panel.style.height = '0px';
+      requestAnimationFrame(() => {
+        panel.style.height = panel.scrollHeight + 'px';
+      });
+
+      panel.addEventListener('transitionend', function onEnd(e){
+        if (e.propertyName !== 'height') return;
+        panel.style.height = 'auto';
+        panel.removeEventListener('transitionend', onEnd);
+      });
+    }
+
+    function close(btn, panel){
+      btn.setAttribute('aria-expanded', 'false');
+
+      if (reduce){
+        panel.style.height = '0px';
+        panel.setAttribute('aria-hidden', 'true');
+        return;
+      }
+
+      panel.style.height = panel.scrollHeight + 'px';
+      requestAnimationFrame(() => {
+        panel.style.height = '0px';
+      });
+
+      panel.addEventListener('transitionend', function onEnd(e){
+        if (e.propertyName !== 'height') return;
+        panel.setAttribute('aria-hidden', 'true');
+        panel.removeEventListener('transitionend', onEnd);
+      });
+    }
+  })();
+
+
+  // ハンバーガーメニュー制御
+  const menuBtn = document.getElementById('menuBtn');
+  const spDrawer = document.getElementById('spDrawer');
+
+  menuBtn.addEventListener('click', () => {
+      spDrawer.classList.toggle('active');
+      menuBtn.classList.toggle('active'); // ✕印にしたい場合はCSSで調整
+  });
+
+  // ドロワー内のリンクをクリックしたら閉じる
+  spDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+          spDrawer.classList.remove('active');
+      });
+  });
+
+});
