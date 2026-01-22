@@ -98,17 +98,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ハンバーガーメニュー制御
-  const menuBtn = document.getElementById('menuBtn');
-  const spDrawer = document.getElementById('spDrawer');
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuBtn = document.getElementById('menuBtn');
+    const spDrawer = document.getElementById('spDrawer');
 
-  menuBtn.addEventListener('click', () => {
-    spDrawer.classList.toggle('active');
-    menuBtn.classList.toggle('active');
-  });
+    // オーバーレイ（背景の膜）を動的に作成
+    const overlay = document.createElement('div');
+    overlay.className = 'drawer-overlay';
+    document.body.appendChild(overlay);
 
-  spDrawer.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      spDrawer.classList.remove('active');
+    function toggleMenu() {
+      const isActive = spDrawer.classList.contains('active');
+
+      if (!isActive) {
+        // 開くとき
+        spDrawer.classList.add('active');
+        menuBtn.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 背後のスクロールを止める
+      } else {
+        // 閉じるとき
+        spDrawer.classList.remove('active');
+        menuBtn.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = ''; // スクロール再開
+      }
+    }
+
+    // イベント登録
+    menuBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu); // 左側の暗い部分をタップで閉じる
+
+    // ドロワー内の「閉じる」ボタンとリンク
+    const closeButtons = spDrawer.querySelectorAll('a, .sp-drawer-close-text-btn');
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', toggleMenu);
     });
   });
 
