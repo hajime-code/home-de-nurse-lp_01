@@ -961,6 +961,58 @@
 		});
 	</script>
 
+	<script>
+		(function () {
+			const menuBtn = document.getElementById('menuBtn');
+			const spDrawer = document.getElementById('spDrawer');
+
+			// オーバーレイを確実に作成
+			let overlay = document.querySelector('.drawer-overlay');
+			if (!overlay) {
+				overlay = document.createElement('div');
+				overlay.className = 'drawer-overlay';
+				document.body.appendChild(overlay);
+			}
+
+			function toggleMenu(e) {
+				// イベントの伝播を止めて、ボタンクリックを確実に
+				if (e) e.stopPropagation();
+
+				const isActive = spDrawer.classList.contains('active');
+
+				if (!isActive) {
+					spDrawer.classList.add('active');
+					menuBtn.classList.add('active');
+					overlay.style.display = 'block';
+					// ブラウザの描画を待ってからactiveクラス付与
+					requestAnimationFrame(() => {
+						overlay.classList.add('active');
+					});
+					document.body.style.overflow = 'hidden';
+				} else {
+					spDrawer.classList.remove('active');
+					menuBtn.classList.remove('active');
+					overlay.classList.remove('active');
+					setTimeout(() => {
+						if (!spDrawer.classList.contains('active')) {
+							overlay.style.display = 'none';
+						}
+					}, 400);
+					document.body.style.overflow = '';
+				}
+			}
+
+			// clickイベントを登録
+			menuBtn.onclick = toggleMenu;
+			overlay.onclick = toggleMenu;
+
+			// ドロワー内リンク・閉じるボタン
+			const closeItems = spDrawer.querySelectorAll('a, .sp-drawer-close-text-btn');
+			closeItems.forEach(item => {
+				item.onclick = toggleMenu;
+			});
+		})();
+	</script>
 
 </body>
 

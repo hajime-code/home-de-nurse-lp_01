@@ -111,37 +111,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // メニュー開閉のメイン関数
-    function toggleMenu() {
-      const isActive = spDrawer.classList.contains('active');
+    // function toggleMenu() {
+    //   const isActive = spDrawer.classList.contains('active');
 
-      if (!isActive) {
-        // 開くとき
-        spDrawer.classList.add('active');
-        menuBtn.classList.add('active');
-        overlay.style.display = 'block'; // 先に表示
-        setTimeout(() => overlay.classList.add('active'), 10); // アニメーション
-        document.body.style.overflow = 'hidden'; // 背景スクロール禁止
-      } else {
-        // 閉じるとき
-        spDrawer.classList.remove('active');
-        menuBtn.classList.remove('active');
-        overlay.classList.remove('active');
-        setTimeout(() => {
-          if (!spDrawer.classList.contains('active')) overlay.style.display = 'none';
-        }, 300); // 消えるのを待ってから非表示
-        document.body.style.overflow = ''; // スクロール再開
-      }
-    }
+    //   if (!isActive) {
+    //     // 開くとき
+    //     spDrawer.classList.add('active');
+    //     menuBtn.classList.add('active');
+    //     overlay.style.display = 'block'; // 先に表示
+    //     setTimeout(() => overlay.classList.add('active'), 10); // アニメーション
+    //     document.body.style.overflow = 'hidden'; // 背景スクロール禁止
+    //   } else {
+    //     // 閉じるとき
+    //     spDrawer.classList.remove('active');
+    //     menuBtn.classList.remove('active');
+    //     overlay.classList.remove('active');
+    //     setTimeout(() => {
+    //       if (!spDrawer.classList.contains('active')) overlay.style.display = 'none';
+    //     }, 300); // 消えるのを待ってから非表示
+    //     document.body.style.overflow = ''; // スクロール再開
+    //   }
+    // }
 
-    // イベント登録
-    menuBtn.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu); // ドロワー外クリックで閉じる
+    // // イベント登録
+    // menuBtn.addEventListener('click', toggleMenu);
+    // overlay.addEventListener('click', toggleMenu); // ドロワー外クリックで閉じる
 
-    // ドロワー内のリンク・閉じるボタン
-    const closeElements = spDrawer.querySelectorAll('a, .sp-drawer-close-text-btn');
-    closeElements.forEach(el => {
-      el.addEventListener('click', toggleMenu);
-    });
+    // // ドロワー内のリンク・閉じるボタン
+    // const closeElements = spDrawer.querySelectorAll('a, .sp-drawer-close-text-btn');
+    // closeElements.forEach(el => {
+    //   el.addEventListener('click', toggleMenu);
+    // });
+
   });
 
 });
