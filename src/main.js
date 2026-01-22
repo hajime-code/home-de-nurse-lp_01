@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // QAアコーディオン
-  (function(){
+  (function () {
     const root = document.querySelector('[data-accordion]');
     if (!root) return;
 
@@ -53,11 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    function openPanel(btn, panel){
+    function openPanel(btn, panel) {
       btn.setAttribute('aria-expanded', 'true');
       panel.setAttribute('aria-hidden', 'false');
 
-      if (reduce){
+      if (reduce) {
         panel.style.height = 'auto';
         return;
       }
@@ -67,17 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.style.height = panel.scrollHeight + 'px';
       });
 
-      panel.addEventListener('transitionend', function onEnd(e){
+      panel.addEventListener('transitionend', function onEnd(e) {
         if (e.propertyName !== 'height') return;
         panel.style.height = 'auto';
         panel.removeEventListener('transitionend', onEnd);
       });
     }
 
-    function close(btn, panel){
+    function close(btn, panel) {
       btn.setAttribute('aria-expanded', 'false');
 
-      if (reduce){
+      if (reduce) {
         panel.style.height = '0px';
         panel.setAttribute('aria-hidden', 'true');
         return;
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.style.height = '0px';
       });
 
-      panel.addEventListener('transitionend', function onEnd(e){
+      panel.addEventListener('transitionend', function onEnd(e) {
         if (e.propertyName !== 'height') return;
         panel.setAttribute('aria-hidden', 'true');
         panel.removeEventListener('transitionend', onEnd);
@@ -102,15 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const spDrawer = document.getElementById('spDrawer');
 
   menuBtn.addEventListener('click', () => {
-      spDrawer.classList.toggle('active');
-      menuBtn.classList.toggle('active'); // ✕印にしたい場合はCSSで調整
+    spDrawer.classList.toggle('active');
+    menuBtn.classList.toggle('active');
   });
 
-  // ドロワー内のリンクをクリックしたら閉じる
   spDrawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-          spDrawer.classList.remove('active');
-      });
+    link.addEventListener('click', () => {
+      spDrawer.classList.remove('active');
+    });
   });
 
 });
