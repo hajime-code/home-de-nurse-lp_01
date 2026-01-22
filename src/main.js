@@ -102,11 +102,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menuBtn');
     const spDrawer = document.getElementById('spDrawer');
 
-    // オーバーレイ（背景の膜）を動的に作成
-    const overlay = document.createElement('div');
-    overlay.className = 'drawer-overlay';
-    document.body.appendChild(overlay);
+    // 1. オーバーレイ（背景の膜）を動的に生成
+    let overlay = document.querySelector('.drawer-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'drawer-overlay';
+      document.body.appendChild(overlay);
+    }
 
+    // メニュー開閉のメイン関数
     function toggleMenu() {
       const isActive = spDrawer.classList.contains('active');
 
@@ -114,25 +118,29 @@ document.addEventListener('DOMContentLoaded', () => {
         // 開くとき
         spDrawer.classList.add('active');
         menuBtn.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // 背後のスクロールを止める
+        overlay.style.display = 'block'; // 先に表示
+        setTimeout(() => overlay.classList.add('active'), 10); // アニメーション
+        document.body.style.overflow = 'hidden'; // 背景スクロール禁止
       } else {
         // 閉じるとき
         spDrawer.classList.remove('active');
         menuBtn.classList.remove('active');
         overlay.classList.remove('active');
+        setTimeout(() => {
+          if (!spDrawer.classList.contains('active')) overlay.style.display = 'none';
+        }, 300); // 消えるのを待ってから非表示
         document.body.style.overflow = ''; // スクロール再開
       }
     }
 
     // イベント登録
     menuBtn.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu); // 左側の暗い部分をタップで閉じる
+    overlay.addEventListener('click', toggleMenu); // ドロワー外クリックで閉じる
 
-    // ドロワー内の「閉じる」ボタンとリンク
-    const closeButtons = spDrawer.querySelectorAll('a, .sp-drawer-close-text-btn');
-    closeButtons.forEach(btn => {
-      btn.addEventListener('click', toggleMenu);
+    // ドロワー内のリンク・閉じるボタン
+    const closeElements = spDrawer.querySelectorAll('a, .sp-drawer-close-text-btn');
+    closeElements.forEach(el => {
+      el.addEventListener('click', toggleMenu);
     });
   });
 

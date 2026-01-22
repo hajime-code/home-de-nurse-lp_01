@@ -408,7 +408,7 @@ button {
 
 .tp-trouble-list li {
   font-size: 20px;
-  line-height: 1.8;
+  line-height: 1.5;
   color: #444;
   padding: 12px 0 12px 1.5em;
   border-bottom: 1px dotted #e0e0e0;
@@ -424,7 +424,7 @@ button {
   left: 0;
   color: #fb8c00;
   font-size: 1.1rem;
-  line-height: 1;
+  line-height: 1.6;
 }
 
 .tp-trouble-list li span {
@@ -1997,172 +1997,113 @@ button {
 }
 
 /* --- Hamburger --- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
 .menu-btn {
-  position: relative;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
+    position: relative;
+    z-index: 1001;
+    display: none;
+    width: 30px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .menu-btn span {
-  display: block;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #d84315;
-  transition: all 0.3s;
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #d84315;
+    transition: all 0.3s;
 }
 
-.menu-btn span:nth-child(1) {
-  top: 0;
-}
+.menu-btn span:nth-child(1) { top: 0; }
+.menu-btn span:nth-child(2) { top: 10px; }
+.menu-btn span:nth-child(3) { top: 20px; }
 
-.menu-btn span:nth-child(2) {
-  top: 10px;
-}
+.menu-btn.active span:nth-child(1) { top: 10px; transform: rotate(45deg); }
+.menu-btn.active span:nth-child(2) { opacity: 0; }
+.menu-btn.active span:nth-child(3) { top: 10px; transform: rotate(-45deg); }
 
-.menu-btn span:nth-child(3) {
-  top: 20px;
-}
-
-/* activeクラスがついた時の変化（×印） */
-.menu-btn.active span:nth-child(1) {
-  top: 10px;
-  transform: rotate(45deg);
-}
-
-.menu-btn.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-btn.active span:nth-child(3) {
-  top: 10px;
-  transform: rotate(-45deg);
-}
-
-.drawer-close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 32px;
-  color: #d84315;
-  cursor: pointer;
-  line-height: 1;
-}
-
-/* --- SP Drawer --- */
 .sp-drawer {
-  position: fixed;
-  top: 40px;
-  right: -100%;
-  width: 80%;
-  height: calc(100% - 40px);
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(8px);
-  z-index: 999;
-  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 40px 20px;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 40px;
+    right: -100%;
+    width: 80%;
+    height: calc(100% - 40px);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 40px 20px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
 }
+
+.sp-drawer.active { right: 0; }
+
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+    display: none;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.drawer-overlay.active { opacity: 1; }
+
+.sp-nav { display: flex; flex-direction: column; gap: 25px; }
+.sp-nav a { font-size: 1.1rem; text-decoration: none; color: #333; font-weight: 700; }
 
 .sp-nav-actions {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.sp-drawer-close-text-btn {
-  background: #eeeeee;
-  color: #666666;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  transition: 0.3s;
-}
-
-/* --- ドロワー背景（オーバーレイ）の追加用 --- */
-/* JSでドロワーが開いた時に、ページの左側に薄暗い膜を張ることでタップ判定を確実にします */
-.drawer-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 998;
-  /* ドロワー(999)のすぐ下 */
-  display: none;
-  /* 初期は非表示 */
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.drawer-overlay.active {
-  display: block;
-  opacity: 1;
-}
-
-.sp-drawer.active {
-  right: 0;
-}
-
-.sp-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.sp-nav a {
-  font-size: 1.2rem;
-  text-decoration: none;
-  color: #333;
-  font-weight: 700;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .sp-nav-cta {
-  background: #d84315;
-  color: #fff !important;
-  text-align: center;
-  padding: 15px;
-  border-radius: 10px;
+    background: #d84315;
+    color: #fff !important;
+    text-align: center;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
-/* --- ToTop Button --- */
-.totop-btn {
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: #ffcc80;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  opacity: 0;
-  transition: 0.3s;
-  z-index: 900;
+.sp-drawer-close-text-btn {
+    background: #eee;
+    color: #666;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.totop-btn.show {
-  opacity: 1;
-  bottom: 110px;
+
+/* --- レスポンシブ表示切り替え --- */
+@media (max-width: 768px) {
+    .pc-nav { display: none; }
+    .menu-btn { display: flex; }
 }
+
+
 
 /* --- Fixed CTA (SP) --- */
 .fixed-cta-sp {
