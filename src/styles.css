@@ -1063,15 +1063,15 @@ button {
 }
 
 .splide__arrow {
-  background: #fff;
-  border: 1px solid #ffcc80;
+  background: #ff9800;
+  /* border: 1px solid #ffcc80; */
   opacity: 1;
   width: 3em;
   height: 3em;
 }
 
 .splide__arrow svg {
-  fill: #d84315;
+  fill: #fff;
 }
 
 .splide__arrow--next {
@@ -1998,110 +1998,147 @@ button {
 
 /* --- Hamburger --- */
 .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.95);
-    height: 40px;
-    display: flex;
-    align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  height: 40px;
+  display: flex;
+  align-items: center;
 }
 
 .menu-btn {
-    position: relative;
-    z-index: 1001;
-    display: none;
-    width: 30px;
-    height: 22px;
-    background: none;
-    border: none;
-    cursor: pointer;
+  position: relative;
+  z-index: 1001;
+  display: none;
+  width: 30px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .menu-btn span {
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #d84315;
-    transition: all 0.3s;
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #d84315;
+  transition: all 0.3s;
 }
 
-.menu-btn span:nth-child(1) { top: 0; }
-.menu-btn span:nth-child(2) { top: 10px; }
-.menu-btn span:nth-child(3) { top: 20px; }
+.menu-btn span:nth-child(1) {
+  top: 0;
+}
 
-.menu-btn.active span:nth-child(1) { top: 10px; transform: rotate(45deg); }
-.menu-btn.active span:nth-child(2) { opacity: 0; }
-.menu-btn.active span:nth-child(3) { top: 10px; transform: rotate(-45deg); }
+.menu-btn span:nth-child(2) {
+  top: 10px;
+}
+
+.menu-btn span:nth-child(3) {
+  top: 20px;
+}
+
+.menu-btn.active span:nth-child(1) {
+  top: 10px;
+  transform: rotate(45deg);
+}
+
+.menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-45deg);
+}
 
 .sp-drawer {
-    position: fixed;
-    top: 40px;
-    right: -100%;
-    width: 80%;
-    height: calc(100% - 40px);
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(8px);
-    z-index: 999;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 40px 20px;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 40px;
+  right: -100%;
+  width: 80%;
+  height: calc(100% - 40px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 40px 20px;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
 }
 
-.sp-drawer.active { right: 0; }
+.sp-drawer.active {
+  right: 0;
+}
 
 .drawer-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 998;
-    display: none;
-    opacity: 0;
-    transition: 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+  display: none;
+  opacity: 0;
+  transition: 0.3s;
 }
 
-.drawer-overlay.active { opacity: 1; }
+.drawer-overlay.active {
+  opacity: 1;
+}
 
-.sp-nav { display: flex; flex-direction: column; gap: 25px; }
-.sp-nav a { font-size: 1.1rem; text-decoration: none; color: #333; font-weight: 700; }
+.sp-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.sp-nav a {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+}
 
 .sp-nav-actions {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .sp-nav-cta {
-    background: #d84315;
-    color: #fff !important;
-    text-align: center;
-    padding: 14px;
-    border-radius: 8px;
-    font-weight: bold;
+  background: #d84315;
+  color: #fff !important;
+  text-align: center;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 .sp-drawer-close-text-btn {
-    background: #eee;
-    color: #666;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
+  background: #eee;
+  color: #666;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 
 /* --- レスポンシブ表示切り替え --- */
 @media (max-width: 768px) {
-    .pc-nav { display: none; }
-    .menu-btn { display: flex; }
+  .pc-nav {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+  }
 }
 
 
@@ -2212,5 +2249,547 @@ button {
       align-items: center;
       text-align: center;
     }
+  }
+}
+
+
+.pc-only-cta-container {
+  display: none;
+}
+
+
+/* =========================
+   PC レイアウト
+   ========================= */
+@media (min-width: 769px) {
+
+  .pc-only-cta-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 80px;
+    /* 前後の余白 */
+    width: 100%;
+  }
+
+  .pc-line-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 650px;
+    /* 最大幅650px */
+    height: 80px;
+    /* PCで見栄えのする高さ */
+    background: #06c755;
+    /* LINEカラー */
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 40px;
+    /* 丸みのあるデザイン */
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(6, 199, 85, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* アイコンを入れたい場合（擬似要素） */
+  .pc-line-btn::before {
+    content: "";
+    width: 32px;
+    height: 32px;
+    background: url('src/img/line-icon.png') no-repeat center center / contain;
+    /* アイコン画像があれば */
+    margin-right: 15px;
+  }
+
+  /* ホバー時の動き */
+  .pc-line-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(6, 199, 85, 0.4);
+    opacity: 0.9;
+  }
+
+  /* --- コンテナの共通設定（中央寄せ） --- */
+  .tp-slider-inner,
+  .tp-trouble-section .container,
+  .tp-feedback-section .container,
+  .tp-faq-section .container,
+  .tp-plan-section .container,
+  .site-footer .container {
+    max-width: var(--container);
+    /* 1120px */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
+
+
+
+  /* 調整 start */
+  .header-logo img {
+    width: 300px;
+  }
+
+  .fv-img {
+    max-width: 600px;
+  }
+
+  .tp-intro-lead {
+    font-size: 2rem;
+    margin-bottom: 80px;
+  }
+
+  .pc-nav a {
+    font-size: 20px;
+  }
+
+  .header-cta {
+    padding: 8px 35px;
+  }
+
+  .tp-connector-symbol {
+    font-size: 3rem;
+  }
+
+  .tp-intro-footer {
+    max-width: 600px;
+    margin: 0 auto;
+    border-top: 3px dashed #ffb74d;
+  }
+
+  .tp-intro-footer p {
+    font-size: 1.8rem;
+  }
+
+  .tp-trouble-title {
+    font-size: 46px;
+  }
+
+  .tp-txt-orange {
+    font-size: 62px;
+  }
+
+  .tp-trouble-header {
+    margin-bottom: 120px;
+  }
+
+  .tp-title-wave {
+    width: 170px;
+    height: 10px;
+    background-size: 17px 17px;
+  }
+
+  .tp-visual-container {
+    margin: 0 auto 160px;
+  }
+
+  .tp-main-circle {
+    width: 320px;
+    height: 320px;
+    border: 6px solid #fff;
+  }
+
+  .tp-float-item {
+    width: 200px;
+  }
+
+  .tp-float-1 {
+    top: -100px;
+    left: -140px;
+  }
+
+  .tp-float-2 {
+    top: -100px;
+    right: -120px;
+  }
+
+  .tp-float-3 {
+    bottom: -100px;
+    right: -120px;
+  }
+
+  .tp-float-4 {
+    bottom: -100px;
+    left: -120px;
+  }
+
+  .tp-float-1 {
+    animation-duration: 6s;
+  }
+
+  .tp-float-2 {
+    animation-duration: 5.5s;
+  }
+
+  .tp-float-3 {
+    animation-duration: 6.5s;
+  }
+
+  .tp-float-4 {
+    animation-duration: 6.5s;
+  }
+
+
+  .tp-content-subtitle {
+    font-size: 36px;
+    border-bottom: 3px solid #e3f2fd;
+  }
+
+  .tp-trouble-content {
+    padding: 25px 50px 40px;
+  }
+
+  .tp-trouble-list li {
+    font-size: 24px;
+    padding: 18px 0 18px 1.5em;
+  }
+
+  .tp-trouble-list li::before {
+    line-height: 1.8;
+  }
+
+  .tp-effects-inner {
+    max-width: 600px;
+  }
+
+  .tp-effects-title {
+    font-size: 36px;
+    padding: 6px 0;
+  }
+
+  .tp-effects-description {
+    font-size: 1.8rem;
+  }
+
+  .tp-effects-highlight p {
+    font-size: 24px;
+  }
+
+  .tp-feedback-section {
+    padding: 100px 20px 60px;
+  }
+
+  .tp-feedback-title {
+    font-size: 46px;
+  }
+
+  .tp-feedback-header {
+    gap: 30px;
+  }
+
+  .tp-header-bubble-img {
+    width: 120px;
+  }
+
+  .tp-feedback-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .tp-feedback-header {
+    margin-bottom: 0;
+  }
+
+  .tp-review-card {
+    margin-bottom: 20px;
+  }
+
+  .tp-review-label {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .tp-review-quote {
+    font-size: 24px;
+  }
+
+  .tp-review-text {
+    font-size: 20px;
+    line-height: 2;
+  }
+
+  .tp-slider-title {
+    font-size: 46px;
+  }
+
+  .tp-slider-inner {
+    max-width: 720px;
+  }
+
+  .tp-card-title {
+    font-size: 36px;
+  }
+
+  .tp-card-body p {
+    font-size: 24px;
+  }
+
+  .tp-card-price {
+    border-top: 3px dashed #eee;
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  #faq {
+    padding: 180px 0 200px;
+  }
+
+  #faq .container {
+    max-width: 720px;
+  }
+
+  #faq .section__title,
+  #plans .section__title {
+    padding-bottom: 30px;
+    font-size: 46px;
+  }
+
+  #faq .section__lead {
+    font-size: 20px;
+  }
+
+  #faq .faq__q,
+  #faq .faq__a-inner {
+    font-size: 24px;
+  }
+
+  #faq .faq__q {
+    padding: 24px 52px 24px 16px;
+  }
+
+  #faq .qa__label {
+    min-width: 40px;
+    height: 40px;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .tp-intro-subtitle {
+    font-size: 32px;
+  }
+
+  .tp-intro-text {
+    font-size: 1.8rem;
+  }
+
+  .tp-q-bubble,
+  .tp-q-text {
+    font-size: 20px;
+  }
+
+  .tp-modal-content {
+    max-width: 600px;
+  }
+
+  .tp-modal-title {
+    font-size: 28px;
+  }
+
+  .tp-modal-badge {
+    font-size: 24px;
+  }
+
+  .tp-modal-item {
+    margin-bottom: 25px;
+  }
+
+  .tp-modal-item p {
+    font-size: 20px;
+    line-height: 2;
+  }
+
+  .tp-modal-btn {
+    font-size: 20px;
+  }
+
+  .tp-q-container {
+    margin: 20px 0 120px;
+  }
+
+  .tp-heading-main {
+    font-size: 36px;
+  }
+
+  .tp-heading-photo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .tp-heading-lead {
+    font-size: 24px;
+  }
+
+  .tp-plan-tab-btn,
+  .tp-corp-tab-btn {
+    font-size: 20px;
+  }
+
+  .tp-corp-name {
+    font-size: 24px;
+  }
+
+  .tp-plan-label,
+  .tp-corp-label,
+  .tp-plan-item,
+  .tp-corp-item {
+    font-size: 20px;
+  }
+
+  .tp-corp-item::before,
+  .tp-corp-footer {
+    font-size: 1rem;
+  }
+
+  .tp-recommend-title {
+    font-size: 46px;
+  }
+
+  .tp-rec-image img:first-child {
+    width: 60%;
+  }
+
+  .tp-sub-deco {
+    width: 80px !important;
+  }
+
+  .tp-recommend-item {
+    margin-bottom: 40px;
+  }
+
+  .tp-rec-text {
+    padding: 40px 20px;
+    font-size: 24px;
+  }
+
+  .tp-message-section .section__title {
+    font-size: 46px;
+  }
+
+  .tp-message-card {
+    gap: 60px;
+  }
+
+  .box18 {
+    padding: 40px;
+  }
+
+  .box18 p {
+    font-size: 20px;
+    line-height: 2;
+  }
+
+  .tp-message-signature {
+    font-size: 20px;
+  }
+
+  .footer-links a {
+    font-size: 20px;
+  }
+
+  .footer-bottom {
+    font-size: 18px;
+  }
+
+  /* 調整 end */
+
+
+
+  /* --- お悩みセクション（2カラム化） --- */
+  .tp-trouble-flex {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .tp-trouble-img {
+    flex: 1;
+    margin-bottom: 0;
+    /* SP用のマージンを解除 */
+  }
+
+  .tp-trouble-content {
+    flex: 1.2;
+  }
+
+  /* --- サービススライダー（Splideの調整） --- */
+  /* PCでは1枚ではなく複数を少し見せる、またはカード幅を調整 */
+  .tp-service-card {
+    padding: 40px;
+    min-height: 400px;
+    /* PCでの高さを確保 */
+  }
+
+  /* --- お客様の声（グリッド表示） --- */
+  .tp-feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2列に並べる */
+    gap: 30px;
+  }
+
+  /* --- プランセクション（横並び） --- */
+  .tp-plan-tabs {
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .tp-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3つのプランを横並び */
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .tp-plan-card {
+    margin-bottom: 0;
+  }
+
+  /* --- ヘッダー（PC用メニュー表示） --- */
+  .site-header {
+    height: 80px;
+    /* PCは少しゆったり */
+  }
+
+  .pc-nav {
+    display: flex !important;
+    /* PCナビを表示 */
+    align-items: center;
+    gap: 30px;
+  }
+
+  .menu-btn {
+    display: none !important;
+    /* ハンバーガーを隠す */
+  }
+
+  /* --- フッター（横並び・ゆとり） --- */
+  .footer-top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer-links {
+    display: flex !important;
+    grid-template-columns: none;
+    /* スマホ用のグリッドを解除 */
+    gap: 40px;
+  }
+
+  /* --- 共通パーツ --- */
+  /* PCでは追尾CTA（スマホ用）を非表示にする */
+  .fixed-cta-sp {
+    display: none !important;
+  }
+
+  /* TOPに戻るボタンの位置調整 */
+  .totop-btn {
+    right: 40px;
+    bottom: 40px;
   }
 }
