@@ -41,12 +41,22 @@ body {
   color: var(--c-text);
   background: var(--c-bg);
   line-height: 1.75;
+
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
-p, h1, h2, h3, h4, h5, h6, li, dt, dd {
-  word-break: keep-all;
-  overflow-wrap: break-word;
-  line-break: strict;
+.ws_nr {
+  white-space: nowrap;
+}
+
+.br-sp { display: none; }
+.br-pc { display: inline; }
+
+@media (max-width: 767px) {
+  .br-sp { display: inline; }
+  .br-pc { display: none; }
 }
 
 img {
@@ -472,7 +482,7 @@ button {
 }
 
 .tp-effects-title {
-  font-size: 28px;
+  font-size: 26px;
   color: #fb8c00;
   background: #fff;
   margin-bottom: 50px;
